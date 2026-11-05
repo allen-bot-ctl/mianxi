@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#0b1220" />
+    <link rel="icon" href="data:," />
+    <title>面戏 · 吼退扑扑 · H5 demo</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+          "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        height: 100%;
+        overflow: hidden;
+        background: radial-gradient(circle at 50% 20%, #101a2e 0%, #05080f 62%);
+      }
+
+      #app {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100vh;
+        height: 100dvh;
+        padding: 0;
+      }
+
+      #stage {
+        display: block;
+        width: min(100vw, calc(100dvh * 9 / 16));
+        height: min(100dvh, calc(100vw * 16 / 9));
+        background: #0b1220;
+        touch-action: none;
+        user-select: none;
+        -webkit-user-select: none;
+        -webkit-tap-highlight-color: transparent;
+        box-shadow: 0 24px 80px rgba(0, 0, 0, 0.55);
+      }
+
+      @media (min-width: 620px) {
+        #stage {
+          border-radius: 18px;
+        }
+      }
+
+      .fatal {
+        max-width: 520px;
+        margin: 24px;
+        padding: 20px;
+        border: 1px solid rgba(255, 140, 140, 0.45);
+        border-radius: 14px;
+        background: rgba(20, 10, 14, 0.9);
+        color: #ffd9d9;
+        line-height: 1.6;
+        font-size: 14px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <canvas id="stage" width="540" height="960"></canvas>
+    </div>
+    <noscript>
+      <div class="fatal">这个 H5 demo 需要 JavaScript。</div>
+    </noscript>
+    <script type="module" src="/main.ts"></script>
+  </body>
+</html>

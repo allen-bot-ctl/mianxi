@@ -50,6 +50,57 @@ export class HoutuiMode implements GameMode {
     this.engine = new IntentEngine(config.intent, () => this.currentP);
   }
 
+  /** 当前意图状态；demo HUD 只读。 */
+  get state(): IntentState {
+    return this.engine.state;
+  }
+
+  /** 当前扑扑的逼近进度 p，0..1。 */
+  get progress(): number {
+    return this.currentP;
+  }
+
+  /** 当前扑扑下标（0 起）。 */
+  get creatureIndex(): number {
+    return this.index;
+  }
+
+  /** 当前扑扑数量。 */
+  get creatureCount(): number {
+    return this.schedules.length;
+  }
+
+  /** 最近一只的判定结果；结果动画/片尾用。 */
+  get currentOutcome(): JudgeOutcome | null {
+    return this.lastOutcome;
+  }
+
+  /** 是否在 1.2–1.5s 结果动画中。 */
+  get isResultAnimating(): boolean {
+    return this.resultTimerMs > 0;
+  }
+
+  /** 结果动画剩余毫秒。 */
+  get resultAnimRemainingMs(): number {
+    return this.resultTimerMs;
+  }
+
+  get paused(): boolean {
+    return this.engine.state === IntentState.PAUSED;
+  }
+
+  get totalPausedMs(): number {
+    return this.engine.totalPausedMs;
+  }
+
+  get isFinished(): boolean {
+    return this.finished;
+  }
+
+  get isAborted(): boolean {
+    return this.aborted;
+  }
+
   prepare(ctx: GameModeContext): void {
     this.context = ctx;
     this.random = mulberry32(ctx.rngSeed ?? 1);

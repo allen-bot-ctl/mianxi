@@ -23,6 +23,20 @@ npm run watch   # 监听编译
 
   发布时把 `game.js`、`game.json`、`project.config.json`、`dist/` 一起放进发布目录。`dist/` 已被 `.gitignore` 忽略，提交前/发布会先 `npm run build`。
 
+## H5 demo
+
+仓库自带一个可交互的浏览器壳，用来在没有抖音环境时走通「吼退扑扑」主路径（隐私 → 对脸 → 校准 → 倒计时 → 三只扑扑 → 片尾 → 结果 → 下载/重玩 → 设置）：
+
+```bash
+npm run demo        # Vite，默认 http://localhost:5173/
+npm run demo:build  # 构建到 demo/dist/
+npm run demo:typecheck
+```
+
+demo 复用根目录的 `core/signal`、`core/intent`、`game/houtui`、配置和遥测，只在 `demo/platform/` 提供 H5 适配；H5 没有人脸检测器，用可拖动的假 bbox + 几何合成的 20 点 mouth 驱动真实算法。摄像头需要 https 或 localhost；拒绝授权会给出提示，也可用 `?demoMock=1` 或错误页按钮切到明确标注的占位画面。
+
+完整说明、操作方式、录屏失败行为和已知限制见 **[`demo/README.md`](demo/README.md)**。
+
 ## 用抖音开发者工具打开
 
 1. 打开抖音开发者工具，选择「小游戏」→ 导入项目，目录选仓库根 `/workspace/projects/mian-xi`。
@@ -86,6 +100,6 @@ tests/               内核单测
 
 ## 边界与后续
 
-- S1–S9 目前是骨架占位，只负责证明场景状态机可切换；隐私、授权、校准、录屏、分享的完整流程在下一轮接入。
+- 抖音端 `src/flow` 的 S1–S9 仍是骨架占位，只负责证明场景状态机可切换；完整交互只在独立的 `demo/` H5 壳中实现，未接入 `game.js` 或 `platform/douyin`。
 - 真机探针结论回来后，优先确认：录屏是否包含画面/游戏层/音效、`VIDEO_PREMIRRORED` 真值、pitch/yaw 单位、美颜全 0 时检测是否可用、`onMouthAh` 灵敏度、检测频率与耗时。
 - 不接 GitHub、不加 remote、不 commit/push。无任何上传人脸/图像/关键点的网络代码。

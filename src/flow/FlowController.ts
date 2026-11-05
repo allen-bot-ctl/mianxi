@@ -35,4 +35,9 @@ export class FlowController {
   get current(): SceneId | null {
     return this.currentScene?.id ?? null;
   }
+
+  /** 当前场景实例。供 demo/H5 把指针、键盘事件转发给具体场景。 */
+  get scene(): Scene | null {
+    return this.currentScene;
+  }
 }

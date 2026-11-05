@@ -1,5 +1,7 @@
 node_modules/
 dist/
+demo/dist/
+demo/.vite/
 *.js.map
 notes/
 artifacts/
