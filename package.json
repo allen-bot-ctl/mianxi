@@ -1,0 +1,17 @@
+{
+  "name": "mian-xi",
+  "version": "0.1.0",
+  "private": true,
+  "description": "面戏 · 抖音小游戏「吼退扑扑」本地脚手架（Canvas 2D + TypeScript）",
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "watch": "tsc -p tsconfig.build.json --watch",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "typescript": "^5.7.0",
+    "vitest": "^2.1.0"
+  }
+}

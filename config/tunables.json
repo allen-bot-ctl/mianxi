@@ -1,0 +1,139 @@
+{
+  "meta": {
+    "version": "0.1.0",
+    "updated": "2026-11-06",
+    "note": "所有可调数值集中在此文件。标 _comment 的是占位/待真机调校项；编码逻辑不得内置业务阈值。"
+  },
+  "judge": {
+    "pEarly": 0.70,
+    "pSuccess": 0.86,
+    "pPerfect": 0.95
+  },
+  "intent": {
+    "O_ON": 0.55,
+    "O_OFF": 0.25,
+    "CLOSED_HOLD_MS": 300,
+    "ROAR_HOLD_MS": 120,
+    "MIN_SAMPLES": 2,
+    "LATENCY_COMP_MS": 0,
+    "LOST_PAUSE_MS": 300,
+    "RESUME_MS": 500,
+    "ABORT_MS": 3000,
+    "CANDIDATE_DROP": 0.10
+  },
+  "face": {
+    "minScore": 0.6,
+    "minWidthRatio": 0.28,
+    "maxWidthRatio": 0.8,
+    "maxAbsYaw": 25,
+    "maxAbsPitch": 25,
+    "_comment": "脸宽比 = bbox.w / 画布宽；yaw/pitch 单位待真机确认，若实测为角度则按度理解。"
+  },
+  "sampling": {
+    "DETECT_EVERY_N_FRAMES": 3,
+    "detectRateWindowMs": 1000
+  },
+  "view": {
+    "VIDEO_PREMIRRORED": false,
+    "_comment": "false：游戏自己水平镜像画面与关键点；真值待第 5 项真机探针确认后由策划改这里。"
+  },
+  "beautify": {
+    "default": "natural",
+    "natural": [0.3, 0.4, 0, 0],
+    "minimum": [0, 0, 0, 0],
+    "probeHigh": [1, 1, 1, 1],
+    "_comment": "自然档为默认；最低档锁定全 0；probeHigh 只用于真机探针对比。大眼/瘦脸始终为 0（探针档除外，仅测检测可用性）。"
+  },
+  "calibration": {
+    "defaultBase": 0.1,
+    "defaultPeak": 0.6,
+    "minDelta": 0.15,
+    "baseWindowMs": 1000,
+    "peakWindowMs": 1500,
+    "peakPercentile": 0.9,
+    "_comment": "defaultBase/defaultPeak 是脚手架占位初值，不是算法结论；第 0 周探针把 r_raw 数值交回策划后，由策划修改这里。"
+  },
+  "slow": {
+    "detectHzThreshold": 10,
+    "timeScale": 1.3,
+    "_comment": "实测检测频率低于 detectHzThreshold 时，所有逼近时长乘以 timeScale。"
+  },
+  "schedule": {
+    "creatures": [
+      {
+        "id": 1,
+        "kind": "straight",
+        "durationMs": 3000,
+        "easing": "easeInQuad"
+      },
+      {
+        "id": 2,
+        "kind": "pause",
+        "firstPhaseMs": 1400,
+        "firstPhaseP": 0.55,
+        "pauseMsMin": 600,
+        "pauseMsMax": 1200,
+        "finalPhaseMs": 900
+      },
+      {
+        "id": 3,
+        "kind": "feint",
+        "firstPhaseMs": 1200,
+        "firstPhaseP": 0.45,
+        "feintRiseMs": 250,
+        "feintPeakP": 0.66,
+        "feintReturnMs": 400,
+        "feintReturnP": 0.5,
+        "pauseMsMin": 300,
+        "pauseMsMax": 800,
+        "finalPhaseMs": 800
+      }
+    ]
+  },
+  "score": {
+    "creatureMax": 2,
+    "titles": [
+      { "min": 0, "max": 0, "label": "糊了一脸" },
+      { "min": 1, "max": 2, "label": "差点吓住" },
+      { "min": 3, "max": 4, "label": "一嗓镇场" },
+      { "min": 5, "max": 5, "label": "狮吼功" },
+      { "min": 6, "max": 6, "label": "吼神本神" }
+    ]
+  },
+  "render": {
+    "dangerCircleSmoothing": 0.3,
+    "creatureMaxWidthFactor": 1.4,
+    "resultAnimMs": 1400,
+    "endingCardMs": 2500,
+    "countdownFrom": 3,
+    "countdownStepMs": 1000,
+    "facecheckHoldMs": 500
+  },
+  "recording": {
+    "durationS": 60,
+    "isMarkOpen": true,
+    "frameRate": 30
+  },
+  "probe": {
+    "detectNValues": [1, 3, 5],
+    "exportKey": "mianxi_probe_log_v1",
+    "maxLogRows": 2000
+  },
+  "share": {
+    "title": "面戏",
+    "hashtags": ["面戏", "吼退扑扑"],
+    "videoTitleTemplate": "我吼退了{n}只扑扑，你来？",
+    "channel": "video"
+  },
+  "privacy": {
+    "version": 1
+  },
+  "storage": {
+    "keys": {
+      "privacyAccepted": "mianxi_privacy_accepted_v1",
+      "calibration": "mianxi_calibration_v1",
+      "beautify": "mianxi_beautify_v1",
+      "bestScore": "mianxi_best_score_v1"
+    }
+  }
+}

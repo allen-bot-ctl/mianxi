@@ -1,0 +1,14 @@
+{
+  "appid": "touristappid",
+  "projectname": "mian-xi",
+  "compileType": "game",
+  "miniprogramRoot": "./",
+  "setting": {
+    "urlCheck": false,
+    "es6": true,
+    "enhance": true,
+    "postcss": false,
+    "minified": false,
+    "uglifyFileName": false
+  }
+}
