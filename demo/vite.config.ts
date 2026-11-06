@@ -9,7 +9,8 @@ const projectRoot = fs.existsSync(path.resolve(cwd, 'src'))
 
 export default defineConfig({
   root: path.resolve(projectRoot, 'demo'),
-  base: './',
+  // GitHub Pages 项目页部署在 /mianxi/ 下；本地开发保持相对路径。
+  base: process.env.VITE_BASE || './',
   server: {
     host: true,
     port: 5173,

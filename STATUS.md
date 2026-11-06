@@ -5,6 +5,8 @@
 依据：`notes/coding-handoff.md`（未修改 notes/artifacts/手册）
 Git：按要求**未 commit、未 push、未加 remote**。
 
+H5 上线地址：**https://allen-bot-ctl.github.io/mianxi/**（GitHub Pages，源码在 `main` 分支 push 后由 `.github/workflows/pages.yml` 构建部署）。
+
 ## 做了什么
 
 ### 工程

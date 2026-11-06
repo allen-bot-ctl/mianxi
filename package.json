@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "description": "面戏 · 抖音小游戏「吼退扑扑」本地脚手架（Canvas 2D + TypeScript）",
+  "homepage": "https://allen-bot-ctl.github.io/mianxi/",
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
     "watch": "tsc -p tsconfig.build.json --watch",
